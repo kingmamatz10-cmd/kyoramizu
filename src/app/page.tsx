@@ -10,6 +10,7 @@ import Products from "@/components/Products";
 import Benefits from "@/components/Benefits";
 import Stats from "@/components/Stats";
 import Gallery from "@/components/Gallery";
+import Stockists from "@/components/Stockists";
 import Testimonials from "@/components/Testimonials";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
@@ -46,6 +47,7 @@ export default function Home() {
             <Benefits />
             <Stats />
             <Gallery />
+            <Stockists />
             <Testimonials />
             <CTA />
             <Footer />

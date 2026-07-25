@@ -34,7 +34,7 @@ export default function CTA() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
           <MagneticButton
             onClick={() => {
-              window.open("https://wa.me/6281234567890?text=Halo%20KYORAMIZU,%20saya%20ingin%20memesan%20Bir%20Pletok", "_blank");
+              window.open("https://wa.me/6282218493527?text=Halo%20KYORAMIZU,%20saya%20ingin%20memesan%20Bir%20Pletok", "_blank");
             }}
             className="w-full sm:w-auto px-10 py-5 rounded-full bg-gold-gradient text-charcoal-dark font-sans text-xs font-bold tracking-[0.2em] uppercase shadow-[0_10px_40px_rgba(212,175,55,0.4)] hover:shadow-[0_15px_60px_rgba(212,175,55,0.7)] transition-shadow"
           >

@@ -7,11 +7,10 @@ import MagneticButton from "./MagneticButton";
 import { useLanguage } from "@/context/LanguageContext";
 
 const socialLinks = [
-  { name: "Instagram", href: "https://instagram.com" },
-  { name: "TikTok", href: "https://tiktok.com" },
-  { name: "Facebook", href: "https://facebook.com" },
-  { name: "Shopee", href: "https://shopee.co.id" },
-  { name: "WhatsApp", href: "https://wa.me" },
+  { name: "Instagram (@birpletokkyoramizu)", href: "https://instagram.com/birpletokkyoramizu" },
+  { name: "WhatsApp (+62-822-1849-3527)", href: "https://wa.me/6282218493527" },
+  { name: "Email (birpletokkyoramizu@gmail.com)", href: "mailto:birpletokkyoramizu@gmail.com" },
+  { name: "Shopee Store", href: "https://shopee.co.id" },
 ];
 
 export default function Navbar() {
@@ -26,6 +25,7 @@ export default function Navbar() {
     { label: t.nav.products, href: "#products" },
     { label: t.nav.benefits, href: "#benefits" },
     { label: t.nav.gallery, href: "#gallery" },
+    { label: t.nav.stockists, href: "#stockists" },
     { label: t.nav.testimonials, href: "#testimonials" },
     { label: t.nav.contact, href: "#cta" },
   ];
@@ -140,7 +140,7 @@ export default function Navbar() {
                     key={item.label}
                     initial={{ x: -40, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 0.1 + idx * 0.05, duration: 0.5 }}
+                    transition={{ delay: 0.05 + idx * 0.04, duration: 0.4 }}
                     className="overflow-hidden"
                   >
                     <button
@@ -150,7 +150,7 @@ export default function Navbar() {
                       <span className="font-mono text-xs text-amber-500/40 group-hover:text-amber-400 transition-colors">
                         0{idx + 1}
                       </span>
-                      <span className="font-serif text-4xl sm:text-6xl md:text-7xl font-light text-cream-DEFAULT group-hover:text-gold-gradient group-hover:translate-x-4 transition-all duration-300">
+                      <span className="font-serif text-3xl sm:text-5xl md:text-6xl font-light text-cream-DEFAULT group-hover:text-gold-gradient group-hover:translate-x-4 transition-all duration-300">
                         {item.label}
                       </span>
                     </button>
@@ -180,7 +180,7 @@ export default function Navbar() {
                           href={social.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center justify-between text-sm text-cream-soft hover:text-amber-400 transition-colors group"
+                          className="flex items-center justify-between text-xs sm:text-sm text-cream-soft hover:text-amber-400 transition-colors group"
                         >
                           <span>{social.name}</span>
                           <ArrowUpRight className="w-4 h-4 opacity-40 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
