@@ -14,22 +14,22 @@ interface GalleryImage {
 const galleryImages: GalleryImage[] = [
   {
     id: "g1",
-    image: "/images/kyoramizu_gallery_garden_1784941716806.png",
+    image: "/images/kyoramizu_gallery_ekstraksi_crimson.jpeg",
     aspect: "aspect-[4/5]",
   },
   {
     id: "g2",
-    image: "/images/kyoramizu_gallery_pour_1784941705750.png",
+    image: "/images/kyoramizu_gallery_pengemasan_artisanal.jpeg",
     aspect: "aspect-square",
   },
   {
     id: "g3",
-    image: "/images/kyoramizu_product_bottle_1784941662207.png",
+    image: "/images/kyoramizu_gallery_panen_dataran_tinggi.jpeg",
     aspect: "aspect-[3/4]",
   },
   {
     id: "g4",
-    image: "/images/kyoramizu_red_ginger_1784941616251.png",
+    image: "/images/kyoramizu_gallery_sajikan_tradisional.jpeg",
     aspect: "aspect-square",
   },
 ];
