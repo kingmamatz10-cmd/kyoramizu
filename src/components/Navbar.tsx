@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Globe, ShoppingBag, ArrowUpRight } from "lucide-react";
@@ -61,8 +62,15 @@ export default function Navbar() {
             href="#hero"
             className="flex items-center space-x-3 group text-left"
           >
-            <div className="w-8 h-8 rounded-full border border-amber-500/40 flex items-center justify-center font-serif text-sm text-gold-gradient group-hover:border-amber-400 transition-colors">
-              K
+            <div className="relative w-10 h-10 flex items-center justify-center">
+              <Image
+                src="/images/kyoramizu-logo-transparent.png"
+                alt="Kyoramizu Logo"
+                width={40}
+                height={40}
+                className="object-contain w-auto h-9 group-hover:scale-105 transition-transform"
+                priority
+              />
             </div>
             <div className="flex flex-col">
               <span className="font-serif text-lg tracking-[0.2em] font-light text-cream-DEFAULT uppercase group-hover:text-amber-400 transition-colors">

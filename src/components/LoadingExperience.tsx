@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
@@ -82,7 +83,7 @@ export default function LoadingExperience({
 
       const promises = urls.map((src) => {
         return new Promise<void>((resolve) => {
-          const img = new Image();
+          const img = new globalThis.Image();
           img.src = src;
           img.onload = () => {
             updateProgress();
@@ -140,13 +141,18 @@ export default function LoadingExperience({
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 1, ease: "easeOut" }}
-              className="relative flex items-center justify-center w-24 h-24"
+              className="relative flex items-center justify-center w-28 h-28"
             >
-              <div className="absolute inset-0 rounded-full border border-amber-500/20 animate-pulse-slow" />
-              <div className="absolute inset-2 rounded-full border border-amber-500/40 animate-spin-slow" />
-              <span className="font-serif text-3xl font-bold tracking-wider text-gold-gradient">
-                KY
-              </span>
+              <div className="absolute -inset-4 rounded-full border border-amber-500/20 animate-pulse-slow pointer-events-none" />
+              <div className="absolute -inset-2 rounded-full border border-amber-500/30 animate-spin-slow pointer-events-none" />
+              <Image
+                src="/images/kyoramizu-logo-transparent.png"
+                alt="Kyoramizu Logo"
+                width={110}
+                height={110}
+                className="object-contain w-auto h-24 drop-shadow-[0_0_25px_rgba(212,175,55,0.4)]"
+                priority
+              />
             </motion.div>
 
             {/* Title & Tagline */}

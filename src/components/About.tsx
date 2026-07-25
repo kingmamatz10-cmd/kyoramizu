@@ -1,23 +1,24 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { Sparkles, Eye, Target, CheckCircle2 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 interface WordProps {
   children: string;
-  progress: any;
-  range: [number, number];
+  delay?: number;
 }
 
-const Word = ({ children, progress, range }: WordProps) => {
-  const opacity = useTransform(progress, range, [0.15, 1]);
-  const y = useTransform(progress, range, [10, 0]);
-
+const Word = ({ children, delay = 0 }: WordProps) => {
   return (
     <span className="relative inline-block mr-2 md:mr-3 my-1">
-      <motion.span style={{ opacity, y }} className="inline-block">
+      <motion.span
+        initial={{ opacity: 0.15, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay, duration: 0.4, ease: "easeOut" }}
+        className="inline-block"
+      >
         {children}
       </motion.span>
     </span>
@@ -25,13 +26,7 @@ const Word = ({ children, progress, range }: WordProps) => {
 };
 
 export default function About() {
-  const containerRef = useRef<HTMLDivElement>(null);
   const { t } = useLanguage();
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
 
   const titleWords = t.about.title.split(" ");
   const bodyWords = t.about.body.split(" ");
@@ -39,7 +34,6 @@ export default function About() {
   return (
     <section
       id="about"
-      ref={containerRef}
       className="relative z-10 min-h-screen bg-[#141312] text-[#FAF7F2] py-32 px-6 md:px-12 flex flex-col justify-center items-center overflow-hidden border-t border-amber-500/10"
     >
       {/* Background Decorative Blur Orbs */}
@@ -58,40 +52,36 @@ export default function About() {
           </span>
         </div>
 
-        {/* Headline character/word scroll reveal */}
+        {/* Headline character/word reveal once in view */}
         <div className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-gold-gradient leading-tight tracking-tight max-w-4xl mx-auto drop-shadow-lg">
-          {titleWords.map((word, i) => {
-            const start = i / titleWords.length;
-            const end = start + 1 / titleWords.length;
-            return (
-              <Word key={`${word}-${i}`} progress={scrollYProgress} range={[start * 0.4, end * 0.4]}>
-                {word}
-              </Word>
-            );
-          })}
+          {titleWords.map((word, i) => (
+            <Word key={`${word}-${i}`} delay={i * 0.04}>
+              {word}
+            </Word>
+          ))}
         </div>
 
         {/* Divider */}
         <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-amber-500/50 to-transparent mx-auto" />
 
-        {/* Body story scroll reveal */}
+        {/* Body story reveal once in view */}
         <div className="font-sans text-base sm:text-xl md:text-2xl font-light text-cream-soft leading-relaxed max-w-3xl mx-auto">
-          {bodyWords.map((word, i) => {
-            const start = 0.3 + (i / bodyWords.length) * 0.5;
-            const end = start + 0.05;
-            return (
-              <Word key={`${word}-${i}`} progress={scrollYProgress} range={[start, end]}>
-                {word}
-              </Word>
-            );
-          })}
+          {bodyWords.map((word, i) => (
+            <Word key={`${word}-${i}`} delay={0.15 + i * 0.015}>
+              {word}
+            </Word>
+          ))}
         </div>
 
         {/* Feature Pill Highlights (4 Pillars, including 2017 Founding History) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-6 text-left">
           {t.about.pills.map((pill, idx) => (
-            <div
+            <motion.div
               key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 + idx * 0.1, duration: 0.5 }}
               className="glass-card p-6 rounded-2xl border-amber-500/20 space-y-2 backdrop-blur-md hover:border-amber-400/40 transition-colors"
             >
               <span className="font-mono text-xs text-amber-400">{pill.num}</span>
@@ -99,14 +89,20 @@ export default function About() {
               <p className="text-xs text-cream-soft/70 font-light leading-relaxed">
                 {pill.desc}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Vision & Mission Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8 text-left">
           {/* Vision */}
-          <div className="glass-card p-8 rounded-3xl border-amber-500/30 space-y-4 backdrop-blur-md relative overflow-hidden group hover:border-amber-400/50 transition-all">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+            className="glass-card p-8 rounded-3xl border-amber-500/30 space-y-4 backdrop-blur-md relative overflow-hidden group hover:border-amber-400/50 transition-all"
+          >
             <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 group-hover:scale-110 transition-transform">
               <Eye className="w-6 h-6" />
             </div>
@@ -116,10 +112,16 @@ export default function About() {
             <p className="font-sans text-sm text-cream-soft/80 font-light leading-relaxed">
               {t.about.vision.desc}
             </p>
-          </div>
+          </motion.div>
 
           {/* Mission */}
-          <div className="glass-card p-8 rounded-3xl border-amber-500/30 space-y-4 backdrop-blur-md relative overflow-hidden group hover:border-amber-400/50 transition-all">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5, duration: 0.5 }}
+            className="glass-card p-8 rounded-3xl border-amber-500/30 space-y-4 backdrop-blur-md relative overflow-hidden group hover:border-amber-400/50 transition-all"
+          >
             <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 group-hover:scale-110 transition-transform">
               <Target className="w-6 h-6" />
             </div>
@@ -134,7 +136,7 @@ export default function About() {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
