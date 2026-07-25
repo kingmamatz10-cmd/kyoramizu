@@ -97,17 +97,17 @@ export default function Founder() {
         </div>
 
         {/* Accurate Packaging Evolution Timeline Section */}
-        <div className="space-y-8 pt-12 border-t border-amber-500/10">
+        <div className="space-y-10 pt-12 border-t border-amber-500/10">
           <div className="text-center space-y-2">
             <span className="font-mono text-xs text-amber-400 tracking-[0.25em] uppercase">
               {t.founder.timelineTitle}
             </span>
-            <h3 className="font-serif text-2xl sm:text-3xl text-cream-DEFAULT font-light">
+            <h3 className="font-serif text-2xl sm:text-4xl text-cream-DEFAULT font-light">
               Perjalanan Transformasi Mutu & Kemasan
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {t.founder.timeline.map((item, idx) => (
               <motion.div
                 key={idx}
@@ -115,20 +115,43 @@ export default function Founder() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1, duration: 0.5 }}
-                className="glass-card p-6 rounded-2xl border-white/10 space-y-3 relative overflow-hidden group hover:border-amber-500/40 transition-colors"
+                className="glass-card p-6 rounded-3xl border-white/10 space-y-4 relative overflow-hidden group hover:border-amber-500/40 transition-colors"
               >
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 font-semibold">
-                    {item.year}
-                  </span>
-                  <PackageCheck className="w-5 h-5 text-amber-400/70" />
+                {/* Timeline Image Banner Container */}
+                <div className="relative w-full h-56 rounded-2xl overflow-hidden border border-white/10 group-hover:border-amber-500/30 transition-colors">
+                  <Image
+                    src={
+                      item.image ||
+                      (idx === 0
+                        ? "/images/kyoramizu_kemasan_2017_before.png"
+                        : "/images/kyoramizu_kemasan_2018_2019_after.png")
+                    }
+                    alt={item.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#141312] via-[#141312]/20 to-transparent opacity-80" />
+
+                  {/* Year Badge Overlay on Image */}
+                  <div className="absolute top-3 left-3">
+                    <span className="font-mono text-xs px-3.5 py-1.5 rounded-full bg-[#141312]/80 backdrop-blur-md border border-amber-500/40 text-amber-300 font-bold shadow-lg">
+                      {item.year}
+                    </span>
+                  </div>
                 </div>
-                <h4 className="font-serif text-xl text-cream-DEFAULT font-light">
-                  {item.title}
-                </h4>
-                <p className="font-sans text-xs sm:text-sm text-cream-soft/70 font-light leading-relaxed">
-                  {item.desc}
-                </p>
+
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <h4 className="font-serif text-xl text-cream-DEFAULT font-light">
+                      {item.title}
+                    </h4>
+                    <PackageCheck className="w-5 h-5 text-amber-400/80 shrink-0" />
+                  </div>
+                  <p className="font-sans text-xs sm:text-sm text-cream-soft/70 font-light leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>
