@@ -13,8 +13,22 @@ export default function CTA() {
       id="cta"
       className="relative z-10 bg-[#141312] text-[#FAF7F2] py-36 px-6 md:px-12 overflow-hidden border-t border-amber-500/20"
     >
+      {/* Background Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+      >
+        <source src="/videos/kyoramizu_cta_background.mp4" type="video/mp4" />
+      </video>
+
+      {/* Dark Gradient Overlay for High Text Contrast */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#141312]/90 via-[#141312]/75 to-[#141312]/90 pointer-events-none" />
+
       {/* Animated Warm Sunlight Radial Gradient Background */}
-      <div className="absolute inset-0 bg-sunlight-gradient pointer-events-none" />
+      <div className="absolute inset-0 bg-sunlight-gradient opacity-60 pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-to-tr from-amber-500/15 via-herbal-DEFAULT/20 to-transparent rounded-full blur-[160px] animate-pulse-slow pointer-events-none" />
 
       <div className="max-w-4xl mx-auto text-center space-y-10 relative z-10">

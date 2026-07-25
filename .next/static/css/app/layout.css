@@ -1518,6 +1518,11 @@ video {
   --tw-gradient-to: rgb(0 0 0 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
+.from-\[\#141312\]\/90 {
+  --tw-gradient-from: rgb(20 19 18 / 0.9) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(20 19 18 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
 .via-\[\#141312\]\/20 {
   --tw-gradient-to: rgb(20 19 18 / 0)  var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), rgb(20 19 18 / 0.2) var(--tw-gradient-via-position), var(--tw-gradient-to);
@@ -1537,6 +1542,10 @@ video {
 .via-transparent {
   --tw-gradient-to: rgb(0 0 0 / 0)  var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), transparent var(--tw-gradient-via-position), var(--tw-gradient-to);
+}
+.via-\[\#141312\]\/75 {
+  --tw-gradient-to: rgb(20 19 18 / 0)  var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), rgb(20 19 18 / 0.75) var(--tw-gradient-via-position), var(--tw-gradient-to);
 }
 .to-amber-900\/30 {
   --tw-gradient-to: rgb(120 53 15 / 0.3) var(--tw-gradient-to-position);
@@ -1561,6 +1570,9 @@ video {
 }
 .to-transparent {
   --tw-gradient-to: transparent var(--tw-gradient-to-position);
+}
+.to-\[\#141312\]\/90 {
+  --tw-gradient-to: rgb(20 19 18 / 0.9) var(--tw-gradient-to-position);
 }
 .bg-cover {
   background-size: cover;
