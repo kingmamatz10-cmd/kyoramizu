@@ -2,12 +2,12 @@
 
 import React, { useState, useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Sparkles, CheckCircle2, Flame, Snowflake, ShoppingBag, ArrowRight } from "lucide-react";
+import { Sparkles, CheckCircle2, Flame, Snowflake, ShoppingBag, ArrowRight, MessageSquare } from "lucide-react";
 import MagneticButton from "./MagneticButton";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Products() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [activeTab, setActiveTab] = useState("features");
   const [selectedVariant, setSelectedVariant] = useState(1);
 
@@ -48,6 +48,11 @@ export default function Products() {
   ];
 
   const currentItem = t.products.items[selectedVariant - 1] || t.products.items[0];
+
+  const mainButtonLabel =
+    selectedVariant === 1
+      ? t.products.orderNow
+      : t.products.chatPricing || (language === "EN" ? "Chat For Pricing Info" : "Chat Untuk Info Harga");
 
   return (
     <section
@@ -130,21 +135,39 @@ export default function Products() {
             </div>
 
             {/* Tab Content Box */}
-            <div className="glass-panel p-8 rounded-3xl border-amber-500/20 space-y-6 min-h-[260px]">
+            <div className="glass-panel p-8 rounded-3xl border-amber-500/20 space-y-6 min-h-[280px]">
               {activeTab === "features" && (
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <h3 className="font-serif text-2xl text-cream-DEFAULT font-light">
-                      {currentItem.name}
-                    </h3>
-                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400">
+                  <div className="flex justify-between items-start gap-4">
+                    <div className="space-y-1">
+                      <h3 className="font-serif text-2xl text-cream-DEFAULT font-light">
+                        {currentItem.name}
+                      </h3>
+                      <p className="font-sans text-xs text-amber-300/80 font-mono tracking-wide">
+                        {currentItem.subtitle}
+                      </p>
+                    </div>
+                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 shrink-0">
                       {currentItem.tag}
                     </span>
                   </div>
-                  <p className="font-sans text-xs text-amber-300/80 font-mono tracking-wide">
-                    {currentItem.subtitle}
-                  </p>
-                  <ul className="space-y-3 font-sans text-xs md:text-sm text-cream-soft/80 font-light">
+
+                  {/* Price & Description Bar */}
+                  <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
+                    <div className="font-mono text-sm sm:text-base text-amber-400 font-semibold flex items-center justify-between">
+                      <span>{currentItem.price}</span>
+                      {currentItem.volume ? (
+                        <span className="text-xs font-normal text-cream-soft/60">{currentItem.volume}</span>
+                      ) : null}
+                    </div>
+                    {currentItem.description ? (
+                      <p className="text-xs font-sans text-cream-soft/70 font-light leading-relaxed pt-0.5">
+                        {currentItem.description}
+                      </p>
+                    ) : null}
+                  </div>
+
+                  <ul className="space-y-3 font-sans text-xs md:text-sm text-cream-soft/80 font-light pt-1">
                     <li className="flex items-start space-x-3">
                       <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                       <span>{currentItem.desc}</span>
@@ -243,14 +266,26 @@ export default function Products() {
 
               <MagneticButton
                 onClick={() => {
-                  const cta = document.getElementById("cta");
-                  cta?.scrollIntoView({ behavior: "smooth" });
+                  window.open(
+                    `https://wa.me/6282218493527?text=${encodeURIComponent(
+                      `Halo KYORAMIZU, saya ingin ${
+                        selectedVariant === 1
+                          ? "memesan"
+                          : "bertanya info harga dan pemesanan untuk"
+                      } ${currentItem.name}`
+                    )}`,
+                    "_blank"
+                  );
                 }}
                 className="w-full py-4 rounded-full bg-gold-gradient text-charcoal-dark font-sans text-xs font-semibold tracking-[0.2em] uppercase hover:shadow-[0_0_30px_rgba(212,175,55,0.4)]"
               >
                 <span className="flex items-center space-x-2">
-                  <ShoppingBag className="w-4 h-4" />
-                  <span>{t.products.orderNow}</span>
+                  {selectedVariant === 1 ? (
+                    <ShoppingBag className="w-4 h-4" />
+                  ) : (
+                    <MessageSquare className="w-4 h-4" />
+                  )}
+                  <span>{mainButtonLabel}</span>
                   <ArrowRight className="w-4 h-4" />
                 </span>
               </MagneticButton>
