@@ -5,6 +5,7 @@ import LoadingExperience from "@/components/LoadingExperience";
 import Navbar from "@/components/Navbar";
 import SequenceScroll from "@/components/SequenceScroll";
 import About from "@/components/About";
+import Founder from "@/components/Founder";
 import Ingredients from "@/components/Ingredients";
 import Products from "@/components/Products";
 import Benefits from "@/components/Benefits";
@@ -42,6 +43,7 @@ export default function Home() {
           {/* -mt-[100vh]: starts 100vh above hero end → covers canvas dead zone */}
           <div className="relative z-10 -mt-[100vh]">
             <About />
+            <Founder />
             <Ingredients />
             <Products />
             <Benefits />

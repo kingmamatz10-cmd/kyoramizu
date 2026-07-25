@@ -21,6 +21,7 @@ export default function Navbar() {
   const menuItems = [
     { label: t.nav.home, href: "#hero" },
     { label: t.nav.about, href: "#about" },
+    { label: t.nav.founder, href: "#founder" },
     { label: t.nav.ingredients, href: "#ingredients" },
     { label: t.nav.products, href: "#products" },
     { label: t.nav.benefits, href: "#benefits" },
@@ -140,7 +141,7 @@ export default function Navbar() {
                     key={item.label}
                     initial={{ x: -40, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 0.05 + idx * 0.04, duration: 0.4 }}
+                    transition={{ delay: 0.05 + idx * 0.03, duration: 0.4 }}
                     className="overflow-hidden"
                   >
                     <button

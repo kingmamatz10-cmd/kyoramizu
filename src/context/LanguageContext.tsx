@@ -9,6 +9,7 @@ export const translations = {
     nav: {
       home: "Home",
       about: "About",
+      founder: "Founder",
       ingredients: "Ingredients",
       products: "Products",
       benefits: "Benefits",
@@ -57,9 +58,9 @@ export const translations = {
           desc: "Cold-filtered, micro-batched, and bottled with ultra-premium glass design.",
         },
         {
-          num: "04 / HISTORY",
-          title: "Est. 2017",
-          desc: "Evolving from simple plastic bottles to premium dark glass bottlings to preserve taste quality and brand prestige.",
+          num: "04 / PACKAGING",
+          title: "Est. 2017 & Glass Evolution",
+          desc: "Launched in 2017 with simple plastic bottles, transitioning in 2018–2019 to premium glass bottles to preserve natural spice flavor and elevate product prestige.",
         },
       ],
       vision: {
@@ -75,6 +76,26 @@ export const translations = {
           "Expanding distribution networks",
         ],
       },
+    },
+    founder: {
+      badge: "Behind Kyoramizu",
+      title: "A Warm Touch From Our Founder",
+      name: "Diana",
+      role: "Founder of Bir Pletok Kyoramizu",
+      story: "Born from a deep passion for Indonesia's rich botanical heritage, Diana founded Bir Pletok Kyoramizu in 2017. Dedicated to preserving authentic Betawi recipes while elevating them for a modern healthy lifestyle, Kyoramizu delivers comforting, healthy tradition for every home.",
+      timelineTitle: "Packaging Evolution Timeline",
+      timeline: [
+        {
+          year: "2017",
+          title: "Initial Plastic Bottling",
+          desc: "Initial launch featuring simple plastic bottle packaging with custom sticker label.",
+        },
+        {
+          year: "2018 – 2019",
+          title: "Premium Glass Innovation",
+          desc: "Evolved to elegant dark glass bottles to elevate product prestige, preserve natural spice flavor & aroma, and support eco-sustainability.",
+        },
+      ],
     },
     ingredients: {
       badge: "Pure Botanicals",
@@ -215,6 +236,29 @@ export const translations = {
           desc: "Lemongrass and pandan promote calm digestion and ease bloating naturally.",
         },
       ],
+      comparisonBadge: "The Kyoramizu Edge",
+      comparisonTitle: "Why We're Different",
+      comparisonSubtitle: "Our unwavering commitment to natural flavor quality, wellness, and your best experience.",
+      aspectHeader: "Aspect",
+      kyoramizuHeader: "Bir Pletok Kyoramizu",
+      othersHeader: "Other Brands",
+      comparisonRows: [
+        {
+          aspect: "Botanical Ingredients",
+          kyoramizu: "Fresh, 100% pure & premium hand-selected spices",
+          others: "Instant powder & artificial flavorings",
+        },
+        {
+          aspect: "Packaging",
+          kyoramizu: "Elegant & modern dark glass bottle",
+          others: "Simple plastic bottles",
+        },
+        {
+          aspect: "Branding & Philosophy",
+          kyoramizu: "Heritage tradition + Modern healthy lifestyle",
+          others: "Conventional local tradition only",
+        },
+      ],
     },
     stats: {
       badge: "Heritage Excellence",
@@ -330,6 +374,7 @@ export const translations = {
     nav: {
       home: "Beranda",
       about: "Tentang",
+      founder: "Founder",
       ingredients: "Rempah",
       products: "Produk",
       benefits: "Manfaat",
@@ -378,9 +423,9 @@ export const translations = {
           desc: "Diekstraksi dingin, dikemas terbatas dalam botol kaca premium ramah lingkungan.",
         },
         {
-          num: "04 / SEJARAH",
-          title: "Berdiri Sejak 2017",
-          desc: "Berawal dari kemasan botol plastik sederhana, kini berkembang menjadi botol kaca premium untuk menjaga kualitas rasa dan citra produk.",
+          num: "04 / KEMASAN",
+          title: "Berdiri 2017 & Evolusi Botol Kaca",
+          desc: "Dirintis tahun 2017 dengan botol plastik sederhana, kemudian berkembang di 2018–2019 menggunakan botol kaca premium untuk menjaga kualitas rasa dan citra produk.",
         },
       ],
       vision: {
@@ -396,6 +441,26 @@ export const translations = {
           "Mengembangkan jaringan distribusi",
         ],
       },
+    },
+    founder: {
+      badge: "Di Balik Kyoramizu",
+      title: "Sentuhan Kehangatan Dari Founder",
+      name: "Diana",
+      role: "Founder Bir Pletok Kyoramizu",
+      story: "Lahir dari kecintaan mendalam terhadap kearifan rempah Nusantara, Diana merintis Bir Pletok Kyoramizu sejak tahun 2017. Dengan komitmen merawat resep autentik khas Betawi dan menghadirkannya dalam gaya hidup sehat modern, Kyoramizu dipersembahkan sebagai kehangatan tradisi yang menyehatkan bagi setiap keluarga.",
+      timelineTitle: "Evolusi Kemasan Kyoramizu",
+      timeline: [
+        {
+          year: "2017",
+          title: "Botol Plastik Sederhana",
+          desc: "Awal mula perintisan produk dengan kemasan botol plastik dan label stiker sederhana.",
+        },
+        {
+          year: "2018 – 2019",
+          title: "Inovasi Botol Kaca Premium",
+          desc: "Beralih ke kemasan botol kaca elegan untuk meningkatkan citra produk premium, menjaga kualitas & rasa rempah, serta lebih ramah lingkungan.",
+        },
+      ],
     },
     ingredients: {
       badge: "Rempah Murni",
@@ -534,6 +599,29 @@ export const translations = {
         {
           title: "Keseimbangan Pencernaan",
           desc: "Serai wangi dan pandan membantu menenangkan perut dan meredakan kembung secara alami.",
+        },
+      ],
+      comparisonBadge: "Keunggulan Kyoramizu",
+      comparisonTitle: "Mengapa Kami Berbeda",
+      comparisonSubtitle: "Komitmen kami menghadirkan mutu terbaik di setiap tetes Bir Pletok Kyoramizu.",
+      aspectHeader: "Aspek",
+      kyoramizuHeader: "Bir Pletok Kyoramizu",
+      othersHeader: "Brand Lain",
+      comparisonRows: [
+        {
+          aspect: "Bahan Rempah",
+          kyoramizu: "Rempah segar, murni & pilihan premium",
+          others: "Bubuk instan & perisa buatan",
+        },
+        {
+          aspect: "Kemasan",
+          kyoramizu: "Botol kaca elegan & modern",
+          others: "Botol plastik sederhana",
+        },
+        {
+          aspect: "Branding",
+          kyoramizu: "Tradisi + Gaya hidup sehat modern",
+          others: "Tradisi lokal saja",
         },
       ],
     },
