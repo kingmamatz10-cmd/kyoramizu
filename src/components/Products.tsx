@@ -47,6 +47,8 @@ export default function Products() {
     { id: "packaging", label: t.products.shelfLife },
   ];
 
+  const currentItem = t.products.items[selectedVariant - 1] || t.products.items[0];
+
   return (
     <section
       id="products"
@@ -72,33 +74,38 @@ export default function Products() {
 
         {/* Product Interactive Main Stage */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left Column: 360° Tilt Parallax Bottle Showcase */}
+          {/* Left Column: 360° Tilt Parallax Cafe Atmosphere Showcase */}
           <div className="lg:col-span-6 flex justify-center perspective-1000">
             <motion.div
               ref={cardRef}
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
               style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-              className="relative w-full max-w-md aspect-[3/4] rounded-3xl p-8 glass-panel border border-amber-500/30 flex flex-col items-center justify-center cursor-grab active:cursor-grabbing shadow-[0_30px_60px_rgba(0,0,0,0.6)]"
+              className="relative w-full max-w-md aspect-[3/4] rounded-3xl p-4 glass-panel border border-amber-500/30 flex flex-col items-center justify-center cursor-grab active:cursor-grabbing shadow-[0_30px_60px_rgba(0,0,0,0.6)] overflow-hidden group"
             >
-              {/* Glow Accent behind bottle */}
+              {/* Glow Accent behind image */}
               <div className="absolute inset-8 rounded-full bg-gradient-to-tr from-amber-500/20 to-herbal-DEFAULT/30 blur-2xl pointer-events-none" />
 
-              {/* Bottle Image */}
-              <motion.img
-                src="/images/kyoramizu_product_bottle_1784941662207.png"
-                alt="KYORAMIZU Bir Pletok Bottle"
-                className="w-full h-auto max-h-[380px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] pointer-events-none"
-                style={{ transform: "translateZ(50px)" }}
-              />
+              {/* Product Cafe Atmosphere Image */}
+              <div
+                className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl"
+                style={{ transform: "translateZ(30px)" }}
+              >
+                <motion.img
+                  src="/images/kyoramizu_product_cafe_atmosphere.jpeg"
+                  alt="KYORAMIZU Bir Pletok Cafe Atmosphere"
+                  className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700 pointer-events-none"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#141312] via-transparent to-transparent opacity-40" />
+              </div>
 
               {/* Interactive Hover Tag */}
               <div
-                className="absolute bottom-6 px-4 py-2 rounded-full glass-card border border-amber-500/40 text-amber-300 text-xs font-mono tracking-widest uppercase flex items-center space-x-2"
-                style={{ transform: "translateZ(40px)" }}
+                className="absolute bottom-6 px-4 py-2 rounded-full glass-card border border-amber-500/40 text-amber-300 text-xs font-mono tracking-widest uppercase flex items-center space-x-2 shadow-lg backdrop-blur-md"
+                style={{ transform: "translateZ(50px)" }}
               >
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>360° Interactive Bottle</span>
+                <span>360° Interactive View</span>
               </div>
             </motion.div>
           </div>
@@ -126,13 +133,21 @@ export default function Products() {
             <div className="glass-panel p-8 rounded-3xl border-amber-500/20 space-y-6 min-h-[260px]">
               {activeTab === "features" && (
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4">
-                  <h3 className="font-serif text-2xl text-cream-DEFAULT font-light">
-                    {t.products.items[0].name}
-                  </h3>
+                  <div className="flex justify-between items-center">
+                    <h3 className="font-serif text-2xl text-cream-DEFAULT font-light">
+                      {currentItem.name}
+                    </h3>
+                    <span className="text-xs font-mono px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400">
+                      {currentItem.tag}
+                    </span>
+                  </div>
+                  <p className="font-sans text-xs text-amber-300/80 font-mono tracking-wide">
+                    {currentItem.subtitle}
+                  </p>
                   <ul className="space-y-3 font-sans text-xs md:text-sm text-cream-soft/80 font-light">
                     <li className="flex items-start space-x-3">
                       <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                      <span>{t.products.items[0].desc}</span>
+                      <span>{currentItem.desc}</span>
                     </li>
                     <li className="flex items-start space-x-3">
                       <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
@@ -152,7 +167,7 @@ export default function Products() {
                         <span className="font-mono text-xs uppercase tracking-wider">Warm Serve</span>
                       </div>
                       <p className="text-xs text-cream-soft/75 font-light">
-                        {t.products.items[0].taste}
+                        {currentItem.taste}
                       </p>
                     </div>
 
@@ -171,11 +186,13 @@ export default function Products() {
 
               {activeTab === "nutrition" && (
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4">
-                  <h3 className="font-serif text-2xl text-cream-DEFAULT font-light">{t.products.volume}</h3>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-center">
+                  <h3 className="font-serif text-2xl text-cream-DEFAULT font-light">{t.products.volume} & Info</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
                     {t.products.items.map((p) => (
-                      <div key={p.id} className="p-3 rounded-xl bg-white/5 border border-white/10">
-                        <span className="block font-mono text-sm font-bold text-amber-400">{p.volume}</span>
+                      <div key={p.id} className="p-4 rounded-2xl bg-white/5 border border-white/10 flex flex-col justify-center items-center space-y-1">
+                        <span className="block font-mono text-xs sm:text-sm font-bold text-amber-400">
+                          {p.volume || p.price}
+                        </span>
                         <span className="text-[10px] text-cream-soft/60 uppercase font-mono">{p.name}</span>
                       </div>
                     ))}
@@ -187,7 +204,7 @@ export default function Products() {
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4">
                   <h3 className="font-serif text-2xl text-cream-DEFAULT font-light">{t.products.shelfLife}</h3>
                   <p className="text-xs md:text-sm text-cream-soft/80 font-light leading-relaxed">
-                    {t.products.items[0].shelfLife} — Bottled in 100% recyclable heavy UV-blocking amber glass.
+                    {currentItem.shelfLife} — Bottled in 100% recyclable heavy UV-blocking dark glass to protect taste & quality.
                   </p>
                 </motion.div>
               )}
@@ -197,7 +214,7 @@ export default function Products() {
             <div className="space-y-4 pt-4">
               <div className="flex justify-between items-center text-xs font-mono text-amber-400 uppercase tracking-widest">
                 <span>Collection Options</span>
-                <span>Express Delivery</span>
+                <span>Direct Order</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -205,15 +222,21 @@ export default function Products() {
                   <button
                     key={prod.id}
                     onClick={() => setSelectedVariant(idx + 1)}
-                    className={`p-3 rounded-2xl border text-left transition-all ${
+                    className={`p-3.5 rounded-2xl border text-left transition-all flex flex-col justify-between min-h-[90px] ${
                       selectedVariant === idx + 1
-                        ? "border-amber-400 bg-amber-500/10 text-cream-DEFAULT"
+                        ? "border-amber-400 bg-amber-500/10 text-cream-DEFAULT shadow-[0_0_15px_rgba(212,175,55,0.15)]"
                         : "border-white/10 bg-white/5 text-cream-soft/60 hover:border-white/30"
                     }`}
                   >
-                    <span className="block font-serif text-sm font-light truncate">{prod.name}</span>
-                    <span className="block font-mono text-[10px] opacity-70">{prod.volume}</span>
-                    <span className="block font-mono text-xs text-amber-400 font-semibold mt-1">{prod.price}</span>
+                    <div className="space-y-0.5">
+                      <span className="block font-serif text-sm font-light leading-snug">{prod.name}</span>
+                      {prod.volume ? (
+                        <span className="block font-mono text-[10px] text-amber-500/70 font-semibold">{prod.volume}</span>
+                      ) : null}
+                    </div>
+                    <span className="block font-mono text-xs text-amber-400 font-semibold mt-2 leading-tight">
+                      {prod.price}
+                    </span>
                   </button>
                 ))}
               </div>
